@@ -4,27 +4,16 @@
 // Utilise PHPMailer via Composer (vendor/autoload.php) OU via les fichiers src inclus localement.
 
 // ===== CONFIG SMTP (fourni par le client) =====
-
-use PHPMailer\PHPMailer\PHPMailer;
-
 const SMTP_HOST = 'smtp-smileup-platform.alwaysdata.net';
 const SMTP_PORT = 587;
 const SMTP_USER = 'smileup-platform@alwaysdata.net';
 const SMTP_PASS = 'WODanielH2006';
-const SMTP_FROM = 'smileup-platform@alwaysdata.net';
+const SMTP_FROM = 'smileup-platform@alwaysdata.net'; // Garder identique au SMTP_USER pour éviter le spoofing
 const SMTP_FROM_NAME = 'Formulaire Daniel Whannou';
 $RECIPIENTS = [
   'danielw@smileupplatform.com',
   'dwhannou229@gmail.com'
 ];
-
-// Fichier de log pour le débogage
-const LOG_FILE = __DIR__ . '/logs.txt';
-
-// Fonction de journalisation
-function log_message($message) {
-    file_put_contents(LOG_FILE, date('Y-m-d H:i:s') . ' - ' . $message . "\n", FILE_APPEND);
-}
 
 // ===== SÉCURITÉ DE BASE =====
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -36,10 +25,12 @@ if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQ
   exit('Requête invalide');
 }
 if (!empty($_POST['website'] ?? '')) {
-  log_message('Honeypot détecté. Arrêt du traitement.');
   exit('OK');
 }
 
+// ===== CHARGEMENT PHPMailer =====
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 $phpmailerLoaded = false;
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
   require __DIR__ . '/vendor/autoload.php';
@@ -61,7 +52,6 @@ if (!$phpmailerLoaded) {
 }
 if (!$phpmailerLoaded) {
   http_response_code(500);
-  log_message('Erreur: PHPMailer introuvable.');
   exit('Erreur: PHPMailer introuvable. Installez-le via Composer (composer require phpmailer/phpmailer) ou placez les fichiers dans forms/PHPMailer/src');
 }
 
@@ -77,19 +67,12 @@ $message = trim($_POST['message'] ?? '');
 
 if ($name === '' || $email === '' || $subject === '' || $message === '') {
   http_response_code(422);
-  log_message('Erreur de validation: champs obligatoires manquants.');
   exit('Veuillez remplir tous les champs obligatoires.');
 }
 
 // ===== CONSTRUCTION DU MAIL =====
 try {
   $mail = new PHPMailer(true);
-  
-  // Debug PHPMailer
-  $mail->SMTPDebug = 2; // Active un mode de débogage détaillé
-  $mail->Debugoutput = function($str, $level) {
-      log_message('PHPMailer DEBUG: ' . $str);
-  };
   
   // SMTP
   $mail->isSMTP();
@@ -101,44 +84,54 @@ try {
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->CharSet    = 'UTF-8';
 
-  $mail->setFrom(SMTP_FROM, SMTP_FROM_NAME);
-  // $mail->addReplyTo($email, $name);
+  // Expéditeur
+  $mail->setFrom(SMTP_FROM, 'Formulaire de Contact');
   global $RECIPIENTS;
   foreach ($RECIPIENTS as $to) {
     $mail->addAddress($to);
   }
 
-  // Contenu
+  // Contenu du mail
   $mail->isHTML(true);
   $mail->Subject = '[Contact] ' . $subject;
-  $html = '<h2>Nouveau message du site</h2>'
-        . '<p><strong>Nom:</strong> '.htmlspecialchars($name).'</p>'
-        . '<p><strong>Email:</strong> '.htmlspecialchars($email).'</p>'
-        . ($phone ? '<p><strong>Téléphone:</strong> '.htmlspecialchars($phone).'</p>' : '')
-        . '<p><strong>Message:</strong><br>' . nl2br(htmlspecialchars($message)) . '</p>'
-        . '<hr><p style="font-size:12px;color:#666">Envoyé depuis le formulaire de danielwhannou • IP: '.($_SERVER['REMOTE_ADDR'] ?? 'N/A').'</p>';
+
+  $html = '<div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">'
+        . '<h2>Nouveau message depuis le formulaire de contact</h2>'
+        . '<p style="font-size: 16px;"><strong>Nom :</strong> ' . htmlspecialchars($name) . '</p>'
+        . '<p style="font-size: 16px;"><strong>Email :</strong> ' . htmlspecialchars($email) . '</p>';
+  if ($phone) {
+    $html .= '<p style="font-size: 16px;"><strong>Téléphone :</strong> ' . htmlspecialchars($phone) . '</p>';
+  }
+  $html .= '<p style="font-size: 16px;"><strong>Sujet :</strong> ' . htmlspecialchars($subject) . '</p>'
+        . '<p style="font-size: 16px;"><strong>Message :</strong></p>'
+        . '<div style="background: #f4f4f4; padding: 15px; border-left: 3px solid #007bff; white-space: pre-wrap;">'
+        . htmlspecialchars($message) . '</div>'
+        . '<hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">'
+        . '<p style="font-size: 12px; color: #999;">Cet e-mail a été envoyé depuis votre site web. Ne répondez pas à cet e-mail, utilisez l\'adresse de l\'expéditeur ci-dessus.</p>'
+        . '</div>';
+
   $plain = "Nouveau message du site\n\n"
          . "Nom: $name\n"
-         . "Email: $email\n"
-         . ($phone ? "Téléphone: $phone\n" : '')
-         . "Sujet: $subject\n\n"
-         . "Message:\n$message\n\n"
-         . "--\nEnvoyé depuis le formulaire de danielwhannou";
+         . "Email: $email\n";
+  if ($phone) {
+    $plain .= "Téléphone: $phone\n";
+  }
+  $plain .= "Sujet: $subject\n\n"
+         . "Message:\n" . $message . "\n\n"
+         . "--\nCet e-mail a été envoyé depuis votre site web.";
+
   $mail->Body    = $html;
   $mail->AltBody = $plain;
 
   // Envoi
   if (!$mail->send()) {
     http_response_code(500);
-    log_message('Échec de l\'envoi du mail : ' . $mail->ErrorInfo);
     exit('Erreur d\'envoi: '.$mail->ErrorInfo);
   }
 
-  log_message('Mail envoyé avec succès.');
   exit('OK');
 
 } catch (Exception $e) {
   http_response_code(500);
-  log_message('Erreur serveur: ' . $e->getMessage());
   exit('Erreur serveur: '.$e->getMessage());
 }

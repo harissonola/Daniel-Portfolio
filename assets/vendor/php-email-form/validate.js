@@ -1,4 +1,3 @@
-
 (function () {
   "use strict";
 
@@ -14,7 +13,7 @@
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
       if( ! action ) {
-        displayError(thisForm, 'The form action property is not set!');
+        displayError(thisForm, 'La propriété d\'action du formulaire n\'est pas définie !');
         return;
       }
       thisForm.querySelector('.loading').classList.add('d-block');
@@ -37,7 +36,7 @@
             }
           });
         } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+          displayError(thisForm, 'L\'URL de l\'API javascript reCaptcha n\'est pas chargée !')
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
@@ -55,7 +54,7 @@
       if( response.ok ) {
         return response.text();
       } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+        throw new Error(`Erreur serveur : ${response.status} ${response.statusText} - URL : ${response.url}`); 
       }
     })
     .then(data => {
@@ -64,7 +63,7 @@
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        throw new Error(data ? data : 'Échec de la soumission du formulaire et aucun message d\'erreur renvoyé depuis : ' + action); 
       }
     })
     .catch((error) => {
