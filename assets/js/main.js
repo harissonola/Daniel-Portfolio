@@ -20,7 +20,7 @@
   }
 
   document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+  document.addEventListener('turbo:load', toggleScrolled);
 
   /**
    * Mobile nav toggle
@@ -63,12 +63,16 @@
   /**
    * Preloader
    */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
+  function removePreloader() {
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
       preloader.remove();
-    });
+    }
   }
+  
+  // Exécuter la fonction de suppression du préchargeur à chaque chargement de page avec Turbo
+  document.addEventListener('turbo:load', removePreloader);
+
 
   /**
    * Scroll top button
@@ -88,7 +92,7 @@
     });
   });
 
-  window.addEventListener('load', toggleScrollTop);
+  document.addEventListener('turbo:load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
 
   /**
@@ -102,7 +106,7 @@
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  document.addEventListener('turbo:load', aosInit);
 
   /**
    * Init typed.js
@@ -159,7 +163,7 @@
     });
   }
 
-  window.addEventListener("load", initSwiper);
+  document.addEventListener("turbo:load", initSwiper);
 
   /**
    * Init isotope layout and filters
