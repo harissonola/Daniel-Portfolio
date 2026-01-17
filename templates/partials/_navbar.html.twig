@@ -1,0 +1,57 @@
+<nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-500" id="main-nav">
+    <div class="max-w-7xl mx-auto flex items-center justify-between glass-card px-8 py-3 border-white/5">
+        {# Logo #}
+        <a href="{{ path('app_home') }}" class="flex items-center gap-3 group">
+            <span class="font-title font-black text-2xl tracking-tighter group-hover:text-accent transition-colors">DANIEL<span class="text-accent italic">.</span></span>
+        </a>
+
+        {# Desktop Links #}
+        <div class="hidden lg:flex items-center gap-10">
+            {% set current_route = app.request.attributes.get('_route') %}
+            
+            {% set nav_links = [
+                {'route': 'app_services', 'label': 'Services'},
+                {'route': 'app_expertise', 'label': 'Expertise'},
+                {'route': 'app_projects', 'label': 'Projets'},
+                {'route': 'app_about', 'label': 'À Propos'}
+            ] %}
+
+            {% for link in nav_links %}
+                <a href="{{ path(link.route) }}" class="relative group py-2">
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-300 {{ current_route == link.route ? 'text-accent' : 'text-text-dim group-hover:text-white' }}">
+                        {{ link.label }}
+                    </span>
+                    {% if current_route == link.route %}
+                        <span class="absolute -bottom-1 left-0 w-full h-[2px] bg-accent shadow-[0_0_10px_#ff3e00]"></span>
+                        <span class="absolute -left-3 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-accent animate-pulse"></span>
+                    {% endif %}
+                </a>
+            {% endfor %}
+            
+            <a href="https://wa.me/2290149141527" target="_blank" class="px-6 py-2 bg-accent text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-white hover:text-primary transition-all duration-300 shadow-[0_0_15px_rgba(255,62,0,0.3)]">
+                ME CONTACTER
+            </a>
+        </div>
+
+        {# Mobile Toggle #}
+        <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+            <i class="fa-solid fa-bars-staggered text-2xl"></i>
+        </button>
+    </div>
+</nav>
+
+{# Mobile Menu Overlay #}
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-primary opacity-0 pointer-events-none translate-x-full" data-state="closed">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+        {% set current_route = app.request.attributes.get('_route') %}
+        <a href="{{ path('app_services') }}" class="text-4xl font-title font-black {{ current_route == 'app_services' ? 'text-accent' : 'hover:text-accent' }}">SERVICES</a>
+        <a href="{{ path('app_expertise') }}" class="text-4xl font-title font-black {{ current_route == 'app_expertise' ? 'text-accent' : 'hover:text-accent' }}">EXPERTISE</a>
+        <a href="{{ path('app_projects') }}" class="text-4xl font-title font-black {{ current_route == 'app_projects' ? 'text-accent' : 'hover:text-accent' }}">PROJETS</a>
+        <a href="{{ path('app_about') }}" class="text-4xl font-title font-black {{ current_route == 'app_about' ? 'text-accent' : 'hover:text-accent' }}">À PROPOS</a>
+        <a href="https://wa.me/2290149141527" class="text-2xl text-accent font-black underline uppercase tracking-widest mt-10">ME CONTACTER</a>
+        
+        <button id="close-mobile-menu" class="absolute top-10 right-10 text-white text-4xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+</div>

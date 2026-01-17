@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Daniel | Ultra-Premium Digital Architect{% endblock %}</title>
+        <meta name="description" content="Portfolio de Daniel, expert en développement Symfony, Flutter et automatisation digitale.">
+        
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚡</text></svg>">
+
+        {% block stylesheets %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script>
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'primary': '#0a192f',
+                                'primary-light': '#112240',
+                                'accent': '#ff3e00',
+                                'secondary': '#64ffda',
+                            },
+                            fontFamily: {
+                                sans: ['Inter', 'sans-serif'],
+                                title: ['Outfit', 'sans-serif'],
+                            }
+                        }
+                    }
+                }
+            </script>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ importmap('app') }}
+        {% endblock %}
+    </head>
+    <body class="bg-primary text-white selection:bg-accent selection:text-white overflow-x-hidden min-h-screen">
+        {# Global Styling Fallback #}
+        <style>
+            body { background-color: #0a192f !important; color: #ccd6f6; }
+            .glass-card {
+                backdrop-filter: blur(12px);
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 1rem;
+            }
+            .premium-btn {
+                background: linear-gradient(45deg, #ff3e00, #ff6f3c) !important;
+                padding: 1rem 2rem;
+                display: inline-block;
+                border-radius: 9999px;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                transition: all 0.3s;
+                color: white !important;
+                text-decoration: none !important;
+            }
+            
+            /* Progressive Reveal: visible by default, GSAP will hide/show if active */
+            .reveal { opacity: 1; transform: none; }
+            .stagger-reveal > * { opacity: 1; transform: none; }
+
+            /* Grain Effect - Moved to background */
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+                opacity: 0.04;
+                pointer-events: none;
+                z-index: -1; 
+            }
+        </style>
+
+        {# Global Glows #}
+        <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-600/5 blur-[120px] rounded-full"></div>
+        </div>
+
+        {% include 'partials/_nav.html.twig' %}
+
+        <main class="min-h-screen">
+            {% block body %}{% endblock %}
+        </main>
+
+        {% include 'partials/_footer.html.twig' %}
+        {% include 'partials/_whatsapp_cta.html.twig' %}
+    </body>
+</html>

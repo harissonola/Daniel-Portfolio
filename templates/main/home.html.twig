@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Daniel | Digital Architect & Performance Expert{% endblock %}
+
+{% block body %}
+<!-- Hero Section -->
+<section id="hero" class="relative h-[90vh] flex items-center justify-center pt-20 overflow-hidden bg-primary">
+    {# Tech Grid Background #}
+    <div class="absolute inset-0 opacity-10 pointer-events-none z-0 tech-grid"></div>
+
+    {# HUD Decorative Elements #}
+    <div class="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        <div class="hud-line absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+        <div class="hud-line absolute bottom-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+        <div class="hud-data absolute top-40 left-10 text-[8px] font-mono text-accent/40 vertical-text hidden md:block">SYSTEM_INIT_DEPL: 100% // SCALING_ACTIVE</div>
+        <div class="hud-data absolute bottom-40 right-10 text-[8px] font-mono text-accent/40 vertical-text hidden md:block">COORD_X: 48.85 // COORD_Y: 2.35</div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-20 w-full" id="hero-content">
+        <div class="hero-left reveal">
+            <h1 class="font-title font-black text-6xl md:text-8xl mb-6 tracking-tighter leading-none hero-title">
+                DANIEL<span class="text-accent underline decoration-2 underline-offset-8">.</span>
+            </h1>
+            <p class="text-2xl md:text-3xl font-light text-text-dim mb-10 leading-snug hero-description">
+                Je transforme vos visions en <span class="text-white font-bold">écosystèmes Web & Mobile ultra-performantes</span>.
+            </p>
+            <div class="flex flex-wrap gap-6 hero-actions">
+                <a href="{{ path('app_projects') }}" class="premium-btn">Découvrir mes projets</a>
+                <a href="#chrono" class="glass-card px-8 py-4 flex items-center gap-2 hover:bg-white/10 transition-colors uppercase tracking-widest text-xs font-black">
+                    Le Défi 72H
+                </a>
+            </div>
+        </div>
+
+        <div class="relative perspective-container reveal h-[400px] md:h-[500px] hero-right">
+            <div id="hero-slider" class="tilt-element glass-card p-4 relative overflow-hidden group w-full h-full">
+                <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
+                
+                <div class="hero-slides relative w-full h-full">
+                    <img src="{{ asset('images/image-1.png') }}" alt="Daniel - Slide 1" class="hero-slide absolute inset-0 rounded-xl w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all duration-700">
+                    <img src="{{ asset('images/image-2.png') }}" alt="Daniel - Slide 2" class="hero-slide absolute inset-0 rounded-xl w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all duration-700 opacity-0">
+                    <img src="{{ asset('images/image-3.png') }}" alt="Daniel - Slide 3" class="hero-slide absolute inset-0 rounded-xl w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all duration-700 opacity-0">
+                </div>
+                
+                {# Floating Badge - Now Dynamic #}
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-light border-4 border-accent rounded-full flex flex-col items-center justify-center rotate-12 group-hover:rotate-0 transition-transform duration-500 shadow-2xl z-20">
+                    <span class="text-xs font-black text-accent uppercase">Expert</span>
+                    <span id="hero-badge-tech" class="text-xl font-black transition-all duration-500 opacity-100">SYMFONY</span>
+                </div>
+            </div>
+            
+            {# Background Decorative Elements #}
+            <div class="absolute -top-10 -left-10 w-24 h-24 bg-accent/10 blur-3xl rounded-full"></div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500/10 blur-3xl rounded-full"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Logos Strip -->
+{% include 'partials/_tech_logos_strip.html.twig' %}
+
+<!-- Chrono Section -->
+<section id="chrono" class="py-32 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+        <div class="inline-block px-4 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+            Mission Critique
+        </div>
+        <h2 class="text-4xl md:text-6xl font-title font-black mb-12 tracking-tight">DÉFI DIGITALISATION BUSINESS 2026</h2>
+        
+        <div class="grid grid-cols-4 gap-2 md:gap-8 w-full">
+            {# Day Unit #}
+            <div class="glass-card p-2 md:p-6 tilt-element flex flex-col items-center justify-center">
+                <span id="chrono-days" class="text-2xl md:text-6xl font-black text-accent shimmer leading-none">00</span>
+                <span class="text-[8px] md:text-[10px] uppercase tracking-widest font-black mt-1 md:mt-4 text-text-dim">Jours</span>
+            </div>
+            {# Hour Unit #}
+            <div class="glass-card p-2 md:p-6 tilt-element flex flex-col items-center justify-center">
+                <span id="chrono-hours" class="text-2xl md:text-6xl font-black text-accent shimmer leading-none">00</span>
+                <span class="text-[8px] md:text-[10px] uppercase tracking-widest font-black mt-1 md:mt-4 text-text-dim">Heures</span>
+            </div>
+            {# Minute Unit #}
+            <div class="glass-card p-2 md:p-6 tilt-element flex flex-col items-center justify-center">
+                <span id="chrono-minutes" class="text-2xl md:text-6xl font-black text-accent shimmer leading-none">00</span>
+                <span class="text-[8px] md:text-[10px] uppercase tracking-widest font-black mt-1 md:mt-4 text-text-dim">Minutes</span>
+            </div>
+            {# Second Unit #}
+            <div class="glass-card p-2 md:p-6 tilt-element flex flex-col items-center justify-center">
+                <span id="chrono-seconds" class="text-2xl md:text-6xl font-black text-accent shimmer leading-none">00</span>
+                <span class="text-[8px] md:text-[10px] uppercase tracking-widest font-black mt-1 md:mt-4 text-text-dim">Secondes</span>
+            </div>
+        </div>
+        <div id="chrono-status" class="mt-8 text-white font-black uppercase tracking-widest text-xs reveal">Initialisation...</div>
+            <div class="absolute top-0 right-0 w-32 h-32 border-r border-t border-white/5 opacity-50"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 border-l border-b border-white/5 opacity-50"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Final CTA -->
+<section class="py-32 bg-gradient-to-t from-primary-light/50 to-transparent">
+    <div class="max-w-7xl mx-auto px-6 text-center reveal">
+        <h3 class="text-5xl md:text-7xl font-title font-black mb-12">PRÊT À <span class="text-accent italic">SCALER</span> ?</h3>
+        <p class="text-xl text-text-dim mb-12 max-w-2xl mx-auto">
+            Chaque seconde compte. Ne laissez pas votre vision stagner. Contactez-moi maintenant pour une analyse gratuite.
+        </p>
+        <a href="https://wa.me/2290149141527" class="premium-btn text-lg">Lancer le projet via WhatsApp</a>
+    </div>
+</section>
+
+<style>
+.shimmer {
+    background: linear-gradient(90deg, #ff3e00 0%, #ffffff 50%, #ff3e00 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+}
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+</style>
+{% endblock %}

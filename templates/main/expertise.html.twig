@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Expertise | Technologie & Méthodologie{% endblock %}
+
+{% block body %}
+<!-- Expertise Section -->
+<section class="pt-40 pb-32 overflow-hidden bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="reveal mb-20 text-center">
+            <span class="text-accent font-black uppercase tracking-widest text-xs">Architecture & Code</span>
+            <h1 class="text-5xl md:text-7xl font-title font-black mt-4 mb-8">MON ARC <span class="text-white/20">TECHNIQUE</span></h1>
+        </div>
+
+        {# Timeline Methodology #}
+        <div class="grid md:grid-cols-2 gap-20 items-center mb-40">
+            <div class="reveal">
+                <h2 class="text-3xl font-title font-bold mb-10">PROCESSUS DE LIVRAISON <span class="text-accent italic">ÉCLAIR</span></h2>
+                <div class="space-y-12 relative">
+                    <div class="absolute left-4 top-0 bottom-0 w-px bg-white/10"></div>
+                    
+                    <div class="relative pl-12">
+                        <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-accent flex items-center justify-center font-black text-xs">01</div>
+                        <h4 class="font-bold text-xl mb-2">Audit & Vision</h4>
+                        <p class="text-text-dim text-sm italic">Comprendre vos enjeux en moins de 24H.</p>
+                    </div>
+
+                    <div class="relative pl-12 font-bold">
+                        <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs">02</div>
+                        <h4 class="text-xl mb-2">Architecture Premium</h4>
+                        <p class="text-text-dim text-sm font-normal">Mise en place d'une stack robuste (Symfony/Postgres/Flutter).</p>
+                    </div>
+
+                    <div class="relative pl-12 font-bold">
+                        <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs">03</div>
+                        <h4 class="text-xl mb-2">Build Sensoriel</h4>
+                        <p class="text-text-dim text-sm font-normal">Développement avec micro-interactions et 3D.</p>
+                    </div>
+
+                    <div class="relative pl-12 font-bold">
+                        <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-accent/30 border border-accent/40 flex items-center justify-center text-xs ring-4 ring-accent/10">04</div>
+                        <h4 class="text-xl mb-2 text-accent">LIVRAISON 72H</h4>
+                        <p class="text-text-dim text-sm font-normal">Déploiement et tests finaux pour une mise en ligne immédiate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal relative">
+                <div class="tilt-element glass-card p-12 relative z-10 border-accent/20">
+                    <h3 class="text-2xl font-bold mb-8 text-center uppercase tracking-widest">Stack Masterisée</h3>
+                    <div class="grid grid-cols-4 gap-6 stagger-reveal">
+                        {% set logos = ['php.png', 'symfony.png', 'js.png', 'html.png', 'css.png', 'flutter.png', 'dart.png', 'bootstrap.png'] %}
+                        {% for logo in logos %}
+                            <div class="w-full aspect-square glass-card p-2 flex items-center justify-center hover:bg-white/5 transition-colors group">
+                                <img src="{{ asset('logos/' ~ logo) }}" alt="{{ logo|replace({'.png': ''}) }}" class="w-2/3 object-contain filter group-hover:scale-110 transition-transform">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {# Background element #}
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent/5 rounded-full blur-[100px] z-0"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

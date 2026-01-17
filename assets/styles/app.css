@@ -1,0 +1,72 @@
+:root {
+    --primary: #0a192f;
+    --primary-light: #112240;
+    --accent: #ff3e00;
+    --accent-glow: rgba(255, 62, 0, 0.3);
+    --secondary: #64ffda;
+    --text-main: #ccd6f6;
+    --text-dim: #8892b0;
+    --glass-bg: rgba(10, 25, 47, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom styles complementing Tailwind CDN */
+body {
+    background-color: #0a192f !important;
+}
+
+.glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 0 30px rgba(255, 62, 0, 0.3);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #ccd6f6, #8892b0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tilt-element {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 5px;
+    border: 2px solid var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+.perspective-container {
+    perspective: 1000px;
+}
+
+/* reveal is visible by default for robustness */
+.reveal {
+    opacity: 1;
+}

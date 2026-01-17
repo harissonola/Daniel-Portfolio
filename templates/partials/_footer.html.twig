@@ -1,0 +1,42 @@
+<footer class="py-20 border-t border-white/5 bg-primary-light/30">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-12 mb-20">
+            <div class="col-span-2">
+                <div class="font-title font-black text-3xl mb-6">Daniel<span class="text-accent">.</span></div>
+                <p class="text-text-dim max-w-sm mb-8 leading-relaxed">
+                    Architecte digital spécialisé dans la création d'expériences web ultra-haut de gamme et d'applications mobiles performantes.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-accent hover:text-white transition-all">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-xs text-accent mb-6">Exploration</h4>
+                <ul class="space-y-4 text-sm font-medium">
+                    <li><a href="{{ path('app_home') }}" class="hover:text-accent transition-colors underline-offset-4 hover:underline">Accueil</a></li>
+                    <li><a href="{{ path('app_services') }}" class="hover:text-accent transition-colors underline-offset-4 hover:underline">Services</a></li>
+                    <li><a href="{{ path('app_projects') }}" class="hover:text-accent transition-colors underline-offset-4 hover:underline">Projets</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-xs text-accent mb-6">Légal</h4>
+                <ul class="space-y-4 text-sm font-medium">
+                    <li><a href="#" class="hover:text-accent transition-colors underline-offset-4 hover:underline">Mentions légales</a></li>
+                    <li><a href="#" class="hover:text-accent transition-colors underline-offset-4 hover:underline">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-10 border-t border-white/5 text-xs text-text-dim uppercase tracking-widest font-bold">
+            <div>&copy; {{ "now"|date("Y") }} Daniel Portfolio. All rights reserved.</div>
+            <div>Designed with passion by <span class="text-white">Daniel</span></div>
+        </div>
+    </div>
+</footer>

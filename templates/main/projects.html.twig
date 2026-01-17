@@ -1,0 +1,169 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projets | Vitrine de l'Excellence{% endblock %}
+
+{% block body %}
+<section class="pt-40 pb-32 bg-primary min-h-screen">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="reveal mb-20">
+            <span class="text-accent font-black uppercase tracking-widest text-xs">Portfolio</span>
+            <h1 class="text-5xl md:text-7xl font-title font-black mt-4 mb-8">CAS D'USAGE <span class="text-white/20">RÉELS</span></h1>
+            
+            {# Filter Controls #}
+            <div class="flex flex-wrap gap-4 mt-12 mb-16">
+                <button class="filter-btn active px-6 py-2 glass-card text-xs font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300" data-filter="all">Tous</button>
+                <button class="filter-btn px-6 py-2 glass-card text-xs font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300" data-filter="web">Web</button>
+                <button class="filter-btn px-6 py-2 glass-card text-xs font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300" data-filter="mobile">Mobile</button>
+                <button class="filter-btn px-6 py-2 glass-card text-xs font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300" data-filter="design">Design</button>
+                <button class="filter-btn px-6 py-2 glass-card text-xs font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300" data-filter="reseau">Réseaux</button>
+                <button class="filter-btn px-6 py-2 glass-card text-xs font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300" data-filter="energie">Énergie</button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            {# SmileUp Platform (Web) #}
+            <div class="project-item group reveal" data-category="web">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/smileupPlatform/smileupBrand.png" alt="SmileUp Platform" class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <a href="https://smileupplatform.com" target="_blank" class="text-accent font-black text-xs uppercase tracking-widest flex items-center gap-2">
+                                Voir le site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">SmileUp Platform</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Mise en relation clients ↔ professionnels (bêta 2025).</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Web</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-text-dim text-white/50">Symfony</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# E-commerce #}
+            <div class="project-item group reveal" data-category="web">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/wodh-portfolio/ecommerce.jpg" alt="Interface e-commerce" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Interface e‑commerce</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Vente en ligne responsive avec paiement sécurisé (Laravel/Stripe).</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Web</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-white/50">Laravel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Plateforme d’investissement #}
+            <div class="project-item group reveal" data-category="web">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/wodh-portfolio/investment.jpg" alt="Investissement" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Plateforme d’investissement</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Dashboard admin + app mobile pour gestion d’investissements.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Web</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-white/50">Symfony</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Livraison #}
+            <div class="project-item group reveal" data-category="mobile">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/wodh-portfolio/mobileApp.jpg" alt="App Livraison" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Application de livraison</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Suivi temps réel, notifications push, carte interactive Flutter.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Mobile</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-white/50">Flutter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# MikroTik #}
+            <div class="project-item group reveal" data-category="reseau">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col border-blue-500/20">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/wodh-portfolio/network.jpg" alt="MikroTik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Réseau MikroTik</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Hotspot, VPN, VLAN, firewall et monitoring technique.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Réseaux</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-white/50">MikroTik</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Branding #}
+            <div class="project-item group reveal" data-category="design">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col border-orange-500/20">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/wodh-portfolio/branding.jpg" alt="Branding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Identité visuelle</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Création de logo, charte graphique et supports branding.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Design</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-white/50">Adobe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Solaire #}
+            <div class="project-item group reveal" data-category="energie">
+                <div class="tilt-element glass-card overflow-hidden h-full flex flex-col border-yellow-500/20">
+                    <div class="aspect-video relative overflow-hidden bg-white/5">
+                        <img src="https://raw.githubusercontent.com/harissonola/my-cdn/main/wodh-portfolio/solar.jpg" alt="Solaire" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Système Solaire</h3>
+                        <p class="text-text-dim text-xs leading-relaxed mb-4">Installation photovoltaïque autonome avec monitoring IoT.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-accent">Énergie</span>
+                            <span class="text-[8px] font-black uppercase border border-white/10 px-2 py-1 rounded text-white/50">IoT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Final CTA #}
+        <div class="mt-32 glass-card p-12 text-center reveal border-accent/30 bg-accent/5">
+            <h2 class="text-3xl font-title font-black mb-6 uppercase tracking-tighter">VOTRE PROJET EN <span class="text-accent underline">72 HEURES</span></h2>
+            <p class="text-text-dim mb-10 max-w-xl mx-auto text-sm">
+                Je ne fais pas que coder, je bats des records de livraison sans compromis sur la qualité. Relevez le défi dès aujourd'hui.
+            </p>
+            <a href="https://wa.me/2290149141527" class="premium-btn">Lancer le chrono</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.filter-btn.active {
+    background: #ff3e00;
+    color: white;
+    border-color: #ff3e00;
+}
+.project-item { transition: all 0.5s ease; }
+.project-item.hidden { opacity: 0; transform: scale(0.9); pointer-events: none; position: absolute; }
+</style>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact | Collaborons en Direct{% endblock %}
+
+{% block body %}
+<section class="pt-40 pb-32 min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="text-center reveal mb-20">
+            <span class="text-accent font-black uppercase tracking-widest text-xs">Let's talk</span>
+            <h1 class="text-6xl md:text-9xl font-title font-black mt-4 mb-8 tracking-tighter uppercase">START A <span class="text-accent italic">STORY</span></h1>
+        </div>
+
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 stagger-reveal items-center">
+            <div class="glass-card p-12 text-center group transition-transform hover:-translate-y-2">
+                <div class="w-20 h-20 bg-[#25D366]/10 rounded-full flex items-center justify-center text-[#25D366] text-4xl mx-auto mb-8 group-hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 uppercase">WhatsApp Direct</h3>
+                <p class="text-text-dim text-sm mb-4 leading-relaxed">
+                    La méthode la plus rapide pour une réponse immédiate. Discutons de votre projet en direct.
+                </p>
+                <p class="text-white font-bold mb-8">+229 01 49 14 15 27</p>
+                <a href="https://wa.me/2290149141527" target="_blank" class="premium-btn w-full block">Envoyer un message</a>
+            </div>
+
+            <div class="glass-card p-12 text-center group transition-transform hover:-translate-y-2 border-white/5 bg-white/5">
+                <div class="w-20 h-20 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 text-4xl mx-auto mb-8 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-4 uppercase">E-mail Pro</h3>
+                <p class="text-text-dim text-sm mb-10 leading-relaxed">
+                    Pour les appels d'offres ou les dossiers complexes. Je réponds sous 24h maximum.
+                </p>
+                <a href="mailto:danielw@smileupplatform.com" class="text-white font-black uppercase tracking-widest text-sm underline underline-offset-8 hover:text-accent transition-colors">danielw@smileupplatform.com</a>
+            </div>
+        </div>
+
+        <div class="mt-32 text-center text-text-dim/30 font-black text-8xl md:text-[15rem] leading-none pointer-events-none select-none reveal">
+            DANIEL.
+        </div>
+    </div>
+</section>
+{% endblock %}

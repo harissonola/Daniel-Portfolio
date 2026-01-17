@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services | Solutions Digitales Premium{% endblock %}
+
+{% block body %}
+<section class="pt-40 pb-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="reveal mb-20">
+            <span class="text-accent font-black uppercase tracking-widest text-xs">Notre Savoir-Faire</span>
+            <h1 class="text-5xl md:text-7xl font-title font-black mt-4 mb-8">SERVICES <span class="text-white/20">SUR-MESURE</span></h1>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 stagger-reveal">
+            {# Site Web Card #}
+            <div class="tilt-element glass-card p-10 group hover:border-accent/40 transition-colors">
+                <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-accent text-2xl mb-8 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3 class="text-2xl font-title font-bold mb-4">Sites Web Premium</h3>
+                <p class="text-text-dim leading-relaxed mb-10">
+                    Vitrines haut de gamme, E-commerce complexes, et applications SaaS avec une expérience utilisateur sensorielle.
+                </p>
+                <ul class="space-y-4 mb-10 text-sm font-semibold">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> Design Motion-Oriented</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> SEO de Précision</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> Performances Apple-Ready</li>
+                </ul>
+                <a href="https://wa.me/2290149141527" class="text-accent font-black uppercase tracking-widest text-xs flex items-center gap-2 group/link">
+                    Commander <i class="fa-solid fa-arrow-right group-hover/link:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            {# Mobile App Card #}
+            <div class="tilt-element glass-card p-10 group hover:border-blue-500/40 transition-colors">
+                <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-8 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <h3 class="text-2xl font-title font-bold mb-4">Apps Flutter</h3>
+                <p class="text-text-dim leading-relaxed mb-10">
+                    Développement cross-platform iOS & Android fluide et réactif pour transformer vos idées en produits mobiles.
+                </p>
+                <ul class="space-y-4 mb-10 text-sm font-semibold">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i> Code 100% Natif</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i> UI Moderne & Interactive</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i> Stockage & Cloud</li>
+                </ul>
+                <a href="https://wa.me/2290149141527" class="text-blue-500 font-black uppercase tracking-widest text-xs flex items-center gap-2 group/link">
+                    Développer <i class="fa-solid fa-arrow-right group-hover/link:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            {# Automation Card #}
+            <div class="tilt-element glass-card p-10 group hover:border-green-500/40 transition-colors">
+                <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-500 text-2xl mb-8 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <h3 class="text-2xl font-title font-bold mb-4">Automatisation</h3>
+                <p class="text-text-dim leading-relaxed mb-10">
+                    Optimisez vos processus business et gagnez des heures précieuses grâce à l'IA et aux scripts intelligents.
+                </p>
+                <ul class="space-y-4 mb-10 text-sm font-semibold">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Workflows sur-mesure</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Intégration API</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Data Scraping Ethique</li>
+                </ul>
+                <a href="https://wa.me/2290149141527" class="text-green-500 font-black uppercase tracking-widest text-xs flex items-center gap-2 group/link">
+                    Optimiser <i class="fa-solid fa-arrow-right group-hover/link:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
