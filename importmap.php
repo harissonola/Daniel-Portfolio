@@ -28,4 +28,7 @@ return [
     'gsap' => [
         'version' => '3.14.2',
     ],
+    '@hotwired/turbo' => [
+        'version' => '7.3.0',
+    ],
 ];
