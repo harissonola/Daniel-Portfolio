@@ -40,8 +40,8 @@ Avant de commencer, assurez-vous d'avoir installé :
 
 1. **Cloner le projet**
    ```bash
-   git clone <votre-repo-url>
-   cd daniel_portfolio
+   git clone https://github.com/harissonola/Daniel-Portfolio.git
+   cd Daniel-Portfolio
    ```
 
 2. **Installer les dépendances PHP**
